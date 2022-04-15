@@ -1,34 +1,30 @@
 package com.mogiio.rtpstreamer;
 
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.mogiio.rtpstreamer.backgroundexample.BackgroundActivity;
-import com.mogiio.rtpstreamer.customexample.RtmpActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.mogiio.rtpstreamer.defaultexample.ExampleRtmpActivity;
-import com.mogiio.rtpstreamer.displayexample.DisplayActivity;
-import com.mogiio.rtpstreamer.filestreamexample.RtmpFromFileActivity;
-import com.mogiio.rtpstreamer.openglexample.OpenGlRtmpActivity;
-import com.mogiio.rtpstreamer.surfacemodeexample.SurfaceModeRtmpActivity;
-import com.mogiio.rtpstreamer.texturemodeexample.TextureModeRtmpActivity;
 import com.mogiio.rtpstreamer.utils.ActivityLink;
 import com.mogiio.rtpstreamer.utils.ImageAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -59,24 +55,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
   private void createList() {
     activities = new ArrayList<>();
-    activities.add(
-        new ActivityLink(new Intent(this, RtmpActivity.class), getString(R.string.rtmp_streamer),
-            JELLY_BEAN));
 
     activities.add(new ActivityLink(new Intent(this, ExampleRtmpActivity.class),
         getString(R.string.default_rtmp), JELLY_BEAN));
-    activities.add(new ActivityLink(new Intent(this, RtmpFromFileActivity.class),
-        getString(R.string.from_file_rtmp), JELLY_BEAN_MR2));
-    activities.add(new ActivityLink(new Intent(this, SurfaceModeRtmpActivity.class),
-        getString(R.string.surface_mode_rtmp), LOLLIPOP));
-    activities.add(new ActivityLink(new Intent(this, TextureModeRtmpActivity.class),
-        getString(R.string.texture_mode_rtmp), LOLLIPOP));
-    activities.add(new ActivityLink(new Intent(this, OpenGlRtmpActivity.class),
-        getString(R.string.opengl_rtmp), JELLY_BEAN_MR2));
-    activities.add(new ActivityLink(new Intent(this, DisplayActivity.class),
-        getString(R.string.display_rtmp), LOLLIPOP));
-    activities.add(new ActivityLink(new Intent(this, BackgroundActivity.class),
-        getString(R.string.service_rtp), LOLLIPOP));
   }
 
   private void setListAdapter(List<ActivityLink> activities) {
